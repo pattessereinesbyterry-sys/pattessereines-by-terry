@@ -79,9 +79,7 @@
       text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    header h1 span {
-      color: var(--or);
-    }
+    header h1 span { color: var(--or); }
 
     header p {
       margin-top: 10px;
@@ -105,12 +103,6 @@
     }
 
     /* ── SECTIONS ── */
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
     section {
       background: var(--blanc);
       max-width: 920px;
@@ -129,6 +121,8 @@
       padding-bottom: 10px;
       border-bottom: 2px solid var(--bleu-pale);
     }
+
+    h2.section-sub { margin-top: 28px; }
 
     h3 {
       color: var(--bleu-moyen);
@@ -159,15 +153,8 @@
       white-space: nowrap;
     }
 
-    .offer-text {
-      font-size: 0.95em;
-      line-height: 1.5;
-    }
-
-    .offer-text strong {
-      font-size: 1.05em;
-      display: block;
-    }
+    .offer-text { font-size: 0.95em; line-height: 1.5; }
+    .offer-text strong { font-size: 1.05em; display: block; }
 
     /* ── GRID CARDS ── */
     .grid {
@@ -193,6 +180,20 @@
       font-size: 0.93em;
       color: #4a5568;
       line-height: 1.6;
+    }
+
+    .card .supplement {
+      font-size: 0.82em;
+      color: var(--bleu-moyen);
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    .card .duree {
+      font-size: 0.82em;
+      color: #6b7a99;
+      margin-top: 4px;
+      font-style: italic;
     }
 
     .price {
@@ -231,10 +232,67 @@
       color: var(--bleu-fonce);
     }
 
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 1px solid #dde6f5;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: var(--bleu-pale);
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.97em;
+      font-weight: 700;
+      color: var(--bleu-fonce);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover { background: #d8e6f8; }
+
+    .faq-question .faq-icon {
+      font-size: 1.1em;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+      background: var(--blanc);
+      font-size: 0.93em;
+      color: #4a5568;
+      line-height: 1.7;
+      padding: 0 20px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 16px 20px;
+    }
+
     /* ── CONTACT ── */
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
       margin-bottom: 20px;
     }
@@ -244,16 +302,24 @@
       align-items: center;
       gap: 10px;
       background: var(--bleu-pale);
-      padding: 14px 16px;
+      padding: 16px 20px;
       border-radius: 10px;
       font-size: 0.95em;
       color: var(--bleu-fonce);
       font-weight: 600;
+      word-break: break-all;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .contact-icon {
-      font-size: 1.3em;
+    .contact-item:hover {
+      background: #d8e6f8;
+      transform: translateY(-2px);
     }
+
+    .contact-item.full-width { grid-column: 1 / -1; font-size: 1em; }
+
+    .contact-icon { font-size: 1.3em; flex-shrink: 0; }
 
     .btn {
       display: inline-flex;
@@ -297,6 +363,7 @@
       header h1 { font-size: 1.8em; }
       section { padding: 24px 18px; margin: 16px 12px; }
       .offer { flex-direction: column; text-align: center; }
+      .contact-item.full-width { grid-column: auto; }
     }
   </style>
 </head>
@@ -307,7 +374,7 @@
 <header>
   <div class="header-content">
     <div class="logo-wrapper">
-      <img src="logo.png" alt="Logo Pattes Sereines">
+      <img src="logo.png" alt="Logo Pattes Sereines by Terry">
     </div>
     <h1>Pattes <span>Sereines</span> by Terry</h1>
     <p>Éducation canine bienveillante & personnalisée</p>
@@ -323,7 +390,7 @@
     <p>Chaque duo maître/chien est unique. Mon rôle est de vous aider à construire une relation équilibrée, basée sur la confiance, la cohérence et le plaisir partagé.</p>
   </div>
 
-  <h2 style="margin-top:28px;">🐶 Pourquoi faire appel à un éducateur ?</h2>
+  <h2 class="section-sub">🐶 Pourquoi faire appel à un éducateur ?</h2>
   <div class="intro-text">
     <p>Faire appel à un éducateur, ce n'est pas uniquement répondre à une difficulté. C'est aussi faire le choix d'anticiper, de comprendre, et d'accompagner son chien avec cohérence dès le départ.</p>
     <p>Un chiot apprend en permanence — chaque interaction façonne son comportement futur. Être accompagné dès le début permet d'éviter bien des incompréhensions.</p>
@@ -343,10 +410,6 @@
     <div class="card">
       <h3>🦮 Éducation du chien adulte</h3>
       <p>Traction en laisse, rappel difficile, excitation… Nous travaillons ensemble pour retrouver confort et clarté au quotidien.</p>
-    </div>
-    <div class="card">
-      <h3>🔄 Rééducation comportementale</h3>
-      <p>Agressivité, peur, anxiété, aboiements… Ces comportements ont toujours une origine. Je vous aide à comprendre et à agir durablement.</p>
     </div>
     <div class="card">
       <h3>🌿 Balades éducatives</h3>
@@ -376,10 +439,12 @@
   <div class="grid" style="margin-bottom:24px;">
     <div class="card">
       <h3>Séance bilan</h3>
+      <p class="duree">⏱ 1h30 à 2h</p>
       <div><span class="price-old">60 €</span><span class="price-new">48 €</span></div>
     </div>
     <div class="card">
       <h3>Séance éducation</h3>
+      <p class="duree">⏱ 1h à 1h30</p>
       <div><span class="price-old">55 €</span><span class="price-new">44 €</span></div>
     </div>
     <div class="card">
@@ -394,11 +459,13 @@
       <h3>Visite 30 min</h3>
       <p>Nourrissage, soins, jeux, nouvelles quotidiennes 📸</p>
       <div class="price">15 €</div>
+      <p class="supplement">+5 € par chien supplémentaire</p>
     </div>
     <div class="card">
       <h3>Visite 1 heure</h3>
       <p>Nourrissage, soins, jeux, nettoyage, nouvelles quotidiennes 📸</p>
       <div class="price">25 €</div>
+      <p class="supplement">+5 € par chien supplémentaire</p>
     </div>
   </div>
 
@@ -407,10 +474,12 @@
     <div class="card">
       <h3>Promenade individuelle 30 min</h3>
       <div class="price">15 €</div>
+      <p class="supplement">+5 € par chien supplémentaire</p>
     </div>
     <div class="card">
       <h3>Promenade individuelle 1h</h3>
       <div class="price">25 €</div>
+      <p class="supplement">+5 € par chien supplémentaire</p>
     </div>
     <div class="card">
       <h3>Balade collective</h3>
@@ -419,6 +488,74 @@
   </div>
 
   <p style="margin-top:18px; font-size:0.88em; color:#777;">📍 +0,40 €/km au-delà de 20 km de mon domicile</p>
+</section>
+
+<!-- FAQ -->
+<section>
+  <h2>❓ Questions fréquentes</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Faut-il être présent pendant la séance ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Oui, votre présence est indispensable ! L'éducation canine, c'est avant tout un travail en duo. Je vous apprends à communiquer avec votre chien, à lire ses signaux et à adapter vos gestes au quotidien. Sans vous, les apprentissages ne peuvent pas se consolider à la maison.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Combien de séances sont nécessaires en général ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Cela dépend du chien, de sa personnalité et des objectifs. On commence toujours par une séance bilan pour évaluer la situation. En règle générale, un accompagnement de 4 à 6 séances suffit pour observer de belles évolutions — mais chaque duo est différent !
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        À partir de quel âge peut-on commencer l'éducation ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Le plus tôt est le mieux ! Un chiot peut commencer dès son arrivée à la maison (généralement vers 8 semaines). Ces premières semaines sont une période clé pour la socialisation et les apprentissages. Cela dit, il n'est jamais trop tard : un chien adulte peut tout à fait apprendre de nouveaux comportements.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Où se déroulent les séances ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Les séances ont lieu à votre domicile ou dans des lieux de vie de votre chien (parc, rue, forêt…). Travailler dans l'environnement réel du chien est beaucoup plus efficace qu'en salle, car c'est là que les comportements se manifestent vraiment.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quelles méthodes utilisez-vous ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Mon approche est entièrement bienveillante et basée sur le renforcement positif. Pas de punition, pas de contrainte : on travaille avec les motivations du chien (friandises, jouets, encouragements) pour qu'il apprenne avec plaisir. Une relation basée sur la confiance, c'est la clé d'une éducation durable.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Intervenez-vous sur toute la région bordelaise ?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        J'interviens principalement à Talence et dans les communes alentours. Au-delà de 20 km de mon domicile, des frais kilométriques de 0,40 €/km s'appliquent. N'hésitez pas à me contacter pour vérifier si votre secteur est couvert !
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- CONTACT -->
@@ -433,14 +570,14 @@
       <span class="contact-icon">📞</span>
       06 81 46 76 24
     </div>
-    <div class="contact-item">
+    <a class="contact-item" href="https://instagram.com/pattesseraines_byterry" target="_blank" rel="noopener">
       <span class="contact-icon">📸</span>
       @pattesseraines_byterry
-    </div>
-    <div class="contact-item">
+    </a>
+    <a class="contact-item full-width" href="mailto:pattessereines.byterry@gmail.com">
       <span class="contact-icon">📧</span>
       pattessereines.byterry@gmail.com
-    </div>
+    </a>
   </div>
   <a class="btn" href="https://wa.me/33681467624">
     💬 Me contacter sur WhatsApp
@@ -448,9 +585,19 @@
 </section>
 
 <footer>
-  <img class="footer-logo" src="logo.png" alt="Logo">
+  <img class="footer-logo" src="logo.png" alt="Logo Pattes Sereines by Terry">
   <p>© 2026 Pattes Sereines by Terry — Éducatrice canine bienveillante</p>
 </footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Ferme tous les autres
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
 
 </body>
 </html>
