@@ -10,12 +10,13 @@
   <meta name="keywords" content="éducatrice canine Talence, éducateur canin Gironde, éducation chien Talence, éducation chiot Bordeaux, rééducation comportementale chien Gironde, pet sitting Talence, promenade chien Talence, Pattes Sereines Terry">
   <meta name="author" content="Pattes Sereines by Terry">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://pattessereinesbyterry-sys.github.io/pattessereines-by-terry/">
+  <link rel="canonical" href="https://pattessereine-byterry.fr/">
 
   <!-- Réseaux sociaux (Open Graph) -->
   <meta property="og:title" content="Éducatrice Canine à Talence | Pattes Sereines by Terry">
   <meta property="og:description" content="Éducation canine bienveillante à Talence et en Gironde. Chiot, chien adulte, pet sitting, promenades.">
-  <meta property="og:image" content="logo.png">
+  <meta property="og:image" content="https://pattessereine-byterry.fr/logo.png">
+  <meta property="og:url" content="https://pattessereine-byterry.fr/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
 
@@ -26,7 +27,7 @@
     "@type": "LocalBusiness",
     "name": "Pattes Sereines by Terry",
     "description": "Éducatrice canine bienveillante à Talence, Gironde. Éducation chiot et chien adulte, rééducation comportementale, pet sitting, promenades.",
-    "url": "https://pattessereinesbyterry-sys.github.io/pattessereines-by-terry/",
+    "url": "https://pattessereine-byterry.fr/",
     "telephone": "+33681467624",
     "email": "pattessereines.byterry@gmail.com",
     "address": {
@@ -42,7 +43,7 @@
     },
     "areaServed": ["Talence", "Gironde", "Bordeaux", "Pessac", "Mérignac"],
     "priceRange": "€€",
-    "image": "logo.png",
+    "image": "https://pattessereine-byterry.fr/logo.png",
     "sameAs": [
       "https://www.instagram.com/pattesseraines_byterry",
       "https://www.facebook.com/PattesSereinesByTerry"
@@ -177,6 +178,100 @@
       margin-bottom: 8px;
     }
 
+    /* ── PRÉSENTATION AVEC PHOTO ── */
+    .presentation-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .terry-photo-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .terry-photo-wrapper img {
+      width: 200px;
+      height: 240px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 14px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(26,58,107,0.18);
+    }
+
+    .terry-photo-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      border: 3px solid var(--or);
+      transform: translate(6px, 6px);
+      z-index: -1;
+    }
+
+    .intro-text p {
+      margin-bottom: 14px;
+      color: #4a5568;
+    }
+
+    .highlight-box {
+      background: var(--bleu-pale);
+      border-left: 4px solid var(--bleu-fonce);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 16px;
+      font-weight: 600;
+      color: var(--bleu-fonce);
+    }
+
+    /* ── GALERIE CHIENS ── */
+    .dog-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .dog-gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 2px 12px rgba(26,58,107,0.1);
+    }
+
+    .dog-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+      display: block;
+    }
+
+    .dog-gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .dog-gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(26,58,107,0.7));
+      color: white;
+      font-size: 0.8em;
+      padding: 18px 10px 8px;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .dog-gallery-item:hover .caption {
+      opacity: 1;
+    }
+
     /* ── OFFRE LANCEMENT ── */
     .offer {
       background: linear-gradient(135deg, var(--bleu-fonce), var(--bleu-moyen));
@@ -260,22 +355,6 @@
       color: var(--bleu-moyen);
       font-weight: 700;
       font-size: 1.2em;
-    }
-
-    /* ── PRÉSENTATION ── */
-    .intro-text p {
-      margin-bottom: 14px;
-      color: #4a5568;
-    }
-
-    .highlight-box {
-      background: var(--bleu-pale);
-      border-left: 4px solid var(--bleu-fonce);
-      padding: 14px 18px;
-      border-radius: 0 10px 10px 0;
-      margin-top: 16px;
-      font-weight: 600;
-      color: var(--bleu-fonce);
     }
 
     /* ── FAQ ── */
@@ -405,11 +484,22 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       header h1 { font-size: 1.8em; }
       section { padding: 24px 18px; margin: 16px 12px; }
       .offer { flex-direction: column; text-align: center; }
       .contact-item.full-width { grid-column: auto; }
+
+      .presentation-layout {
+        grid-template-columns: 1fr;
+      }
+      .terry-photo-wrapper img {
+        width: 100%;
+        height: 220px;
+      }
+      .dog-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
@@ -431,9 +521,15 @@
 <!-- PRÉSENTATION -->
 <section>
   <h2>🐾 Présentation</h2>
-  <div class="intro-text">
-    <p>Passionnée par les chiens depuis toujours, j'ai choisi de me former au métier d'éducatrice canine pour accompagner les chiens… mais surtout leurs humains. Mon approche repose sur la compréhension du chien, de ses besoins et de son mode de communication.</p>
-    <p>Chaque duo maître/chien est unique. Mon rôle est de vous aider à construire une relation équilibrée, basée sur la confiance, la cohérence et le plaisir partagé.</p>
+  <div class="presentation-layout">
+    <div class="terry-photo-wrapper">
+      <img src="terry-portrait.jpeg" alt="Terry, éducatrice canine à Talence">
+    </div>
+    <div class="intro-text">
+      <p>Passionnée par les chiens depuis toujours, j'ai choisi de me former au métier d'éducatrice canine pour accompagner les chiens… mais surtout leurs humains. Mon approche repose sur la compréhension du chien, de ses besoins et de son mode de communication.</p>
+      <p>Chaque duo maître/chien est unique. Mon rôle est de vous aider à construire une relation équilibrée, basée sur la confiance, la cohérence et le plaisir partagé.</p>
+      <div class="highlight-box">📅 Prendre rendez-vous, c'est investir dans une relation sereine et durable.</div>
+    </div>
   </div>
 
   <h2 class="section-sub">🐶 Pourquoi faire appel à un éducateur ?</h2>
@@ -442,7 +538,22 @@
     <p>Un chiot apprend en permanence — chaque interaction façonne son comportement futur. Être accompagné dès le début permet d'éviter bien des incompréhensions.</p>
     <p>Et pour un chien adulte, il n'est jamais trop tard pour rééquilibrer une relation.</p>
   </div>
-  <div class="highlight-box">📅 Prendre rendez-vous, c'est investir dans une relation sereine et durable.</div>
+
+  <!-- GALERIE -->
+  <div class="dog-gallery">
+    <div class="dog-gallery-item">
+      <img src="chiens-1.jpeg" alt="Chiots en socialisation">
+      <div class="caption">Socialisation entre chiots 🐾</div>
+    </div>
+    <div class="dog-gallery-item">
+      <img src="chiens-2.jpeg" alt="Chien adulte au calme">
+      <div class="caption">Un regard plein de confiance ✨</div>
+    </div>
+    <div class="dog-gallery-item">
+      <img src="chiens-3.jpeg" alt="Balade en forêt">
+      <div class="caption">Balade et rappel en nature 🌿</div>
+    </div>
+  </div>
 </section>
 
 <!-- ACCOMPAGNEMENTS -->
@@ -462,7 +573,7 @@
       <p>Un prolongement du travail individuel pour consolider les acquis dans un cadre encadré et stimulant.</p>
     </div>
     <div class="card">
-      <h3>🎁 Avant adoption <span style="color:var(--or);font-size:0.85em;">(gratuit)</span></h3>
+      <h3>🎁 Avant adoption <span style="color:var(--or);font-size:0.85em;">(offert)</span></h3>
       <p>Choix du chien, préparation du foyer… Un accompagnement essentiel pour bien démarrer ensemble.</p>
     </div>
   </div>
@@ -608,10 +719,10 @@
 <section>
   <h2>📬 Contact</h2>
   <div class="contact-grid">
-    <div class="contact-item">
-      <span class="contact-icon">👍</span>
+    <a class="contact-item" href="https://www.facebook.com/PattesSereinesByTerry" target="_blank" rel="noopener">
+      <span class="contact-icon">📘</span>
       Pattes Sereines by Terry
-    </div>
+    </a>
     <div class="contact-item">
       <span class="contact-icon">📞</span>
       06 81 46 76 24
@@ -639,7 +750,6 @@
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-    // Ferme tous les autres
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
